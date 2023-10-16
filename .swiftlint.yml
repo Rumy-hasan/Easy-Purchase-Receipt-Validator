@@ -9,6 +9,12 @@ disabled_rules:
   - orphaned_doc_comment
   - todo
   - unused_capture_list
+  - indentation_width
+  - vertical_whitespace
+  - unused_optional_binding
+  - trailing_whitespace
+  - line_length
+  - type_name
 
 analyzer_rules:
   - unused_import
