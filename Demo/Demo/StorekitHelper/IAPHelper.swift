@@ -10,12 +10,12 @@ import StoreKit
 
 class IAPHelper: NSObject {
     static let shared = IAPHelper()
-    var availableProducts = [SKProduct]()
-    var invalidProductIdentifiers = [String]()
+    var availableProducts: [SKProduct] = []
+    var invalidProductIdentifiers: [String] = []
     /// Keeps track of all purchases.
-    var purchased = [SKPaymentTransaction]()
+    var purchased: [SKPaymentTransaction] = []
     /// Keeps track of all restored purchases.
-    var restored = [SKPaymentTransaction]()
+    var restored: [SKPaymentTransaction] = []
     /// Indicates whether there are restorable purchases.
     var hasRestorablePurchases = false
     var purchasingCount = 0
@@ -23,7 +23,7 @@ class IAPHelper: NSObject {
     var purchasedCount = 0
     var failedCount = 0
     var restoredCount = 0
-    var removedProductIdentifiers = [String]()
+    var removedProductIdentifiers: [String] = []
     var restoreFailedCount = 0
     func fetchProductsData(type products: [String]) {
         let request = SKProductsRequest(productIdentifiers: Set(products))
@@ -37,6 +37,14 @@ class IAPHelper: NSObject {
         let payment = SKPayment(product: product)
         SKPaymentQueue.default().add(self)
         SKPaymentQueue.default().add(payment)
+    }
+    /// Restores all previously completed purchases.
+    func restoreProducts() {
+        if !restored.isEmpty {
+            restored.removeAll()
+        }
+        SKPaymentQueue.default().add(self)
+        SKPaymentQueue.default().restoreCompletedTransactions()
     }
 }
 
@@ -81,6 +89,7 @@ extension IAPHelper: SKPaymentTransactionObserver {
                 // There're restored products.
             case .restored:
                 restoredCount += 1
+                handleRestored(transaction)
             @unknown default:
                 fatalError(Messages.unknownPaymentTransaction)
             }
@@ -110,5 +119,42 @@ extension IAPHelper {
         }
         // Finish the failed transaction.
         SKPaymentQueue.default().finishTransaction(transaction)
+    }
+    /// Handles restored purchase transactions.
+    func handleRestored(_ transaction: SKPaymentTransaction) {
+        hasRestorablePurchases = true
+        restored.append(transaction)
+        print("\(Messages.restoreContent) \(transaction.payment.productIdentifier).")
+        print("Restore Successful")
+        // Finishes the restored transaction.
+        SKPaymentQueue.default().finishTransaction(transaction)
+    }
+}
+// PaymentQueue Methods
+extension IAPHelper {
+    /// Logs all transactions that have been removed from the payment queue.
+    func paymentQueue(_ queue: SKPaymentQueue, removedTransactions transactions: [SKPaymentTransaction]) {
+        for transaction in transactions {
+            print("\(transaction.payment.productIdentifier) \(Messages.removed)")
+            removedProductIdentifiers.append(transaction.payment.productIdentifier)
+        }
+    }
+    
+    /// Called when an error occur while restoring purchases. Notify the user about the error.
+    func paymentQueue(_ queue: SKPaymentQueue, restoreCompletedTransactionsFailedWithError error: Error) {
+        restoreFailedCount += 1
+        if let error = error as? SKError, error.code != .paymentCancelled {
+            print(error.localizedDescription)
+            RestoreVC.viewModel.fetchList.value = restored
+        }
+    }
+    
+    /// Called when all restorable transactions have been processed by the payment queue.
+    func paymentQueueRestoreCompletedTransactionsFinished(_ queue: SKPaymentQueue) {
+        print(Messages.restorable)
+        RestoreVC.viewModel.fetchList.value = restored
+        if !hasRestorablePurchases {
+            print(Messages.noRestorablePurchases)
+        }
     }
 }

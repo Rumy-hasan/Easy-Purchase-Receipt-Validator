@@ -26,6 +26,8 @@
 		8937789B2ADE3DD000DEF484 /* IAPHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8937789A2ADE3DD000DEF484 /* IAPHelper.swift */; };
 		8937789E2ADE408A00DEF484 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8937789D2ADE408A00DEF484 /* StoreKit.framework */; };
 		893778A12ADE51DB00DEF484 /* ProductDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 893778A02ADE51DB00DEF484 /* ProductDetailVC.swift */; };
+		893778A52ADE5B9500DEF484 /* RestoreVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 893778A42ADE5B9500DEF484 /* RestoreVC.swift */; };
+		893778A72ADE5F1600DEF484 /* RestoreViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 893778A62ADE5F1600DEF484 /* RestoreViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +71,8 @@
 		8937789A2ADE3DD000DEF484 /* IAPHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IAPHelper.swift; sourceTree = "<group>"; };
 		8937789D2ADE408A00DEF484 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		893778A02ADE51DB00DEF484 /* ProductDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailVC.swift; sourceTree = "<group>"; };
+		893778A42ADE5B9500DEF484 /* RestoreVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestoreVC.swift; sourceTree = "<group>"; };
+		893778A62ADE5F1600DEF484 /* RestoreViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestoreViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,6 +132,7 @@
 				84C477572ADCF578003A20F7 /* Assets.xcassets */,
 				893778832ADE2D1300DEF484 /* FetchProductsList */,
 				8937789F2ADE518D00DEF484 /* ProductDetailVC */,
+				893778A32ADE5B7500DEF484 /* RestoreView */,
 				893778902ADE3B4100DEF484 /* Utils */,
 				893778952ADE3C2E00DEF484 /* StorekitHelper */,
 				84C477592ADCF578003A20F7 /* LaunchScreen.storyboard */,
@@ -196,6 +201,15 @@
 				893778A02ADE51DB00DEF484 /* ProductDetailVC.swift */,
 			);
 			path = ProductDetailVC;
+			sourceTree = "<group>";
+		};
+		893778A32ADE5B7500DEF484 /* RestoreView */ = {
+			isa = PBXGroup;
+			children = (
+				893778A42ADE5B9500DEF484 /* RestoreVC.swift */,
+				893778A62ADE5F1600DEF484 /* RestoreViewModel.swift */,
+			);
+			path = RestoreView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -375,6 +389,7 @@
 				84C477532ADCF577003A20F7 /* ViewController.swift in Sources */,
 				84C4774F2ADCF577003A20F7 /* AppDelegate.swift in Sources */,
 				893778992ADE3D4600DEF484 /* FetchProductListViewModel.swift in Sources */,
+				893778A72ADE5F1600DEF484 /* RestoreViewModel.swift in Sources */,
 				893778882ADE2E1200DEF484 /* ProductCell.swift in Sources */,
 				84C477512ADCF577003A20F7 /* SceneDelegate.swift in Sources */,
 				893778942ADE3BF100DEF484 /* ObservableObject.swift in Sources */,
@@ -382,6 +397,7 @@
 				893778852ADE2D4400DEF484 /* FetchProductsListVC.swift in Sources */,
 				8937789B2ADE3DD000DEF484 /* IAPHelper.swift in Sources */,
 				893778922ADE3B6700DEF484 /* Constants.swift in Sources */,
+				893778A52ADE5B9500DEF484 /* RestoreVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

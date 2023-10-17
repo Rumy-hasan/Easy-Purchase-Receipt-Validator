@@ -23,18 +23,19 @@ class FetchProductListViewModel {
         }
     }
     var fetchList: ObservableObject<FetchList?> = ObservableObject(nil)
-    let productsList = [ "com.bjitgroup.easypurchase.consumable.tencoin",
-                         "com.bjitgroup.easypurchase.consumable.twentycoin",
-                         "com.bjitgroup.easypurchase.consumable.thirtycoin",
-                         "com.bjitgroup.easypurchase.nonconsumable.levelone",
-                         "com.bjitgroup.easypurchase.nonconsumable.leveltwo",
-                         "com.bjitgroup.easypurchase.nonconsumable.levelthree",
-                         "com.bjitgroup.easypurchase.nonRenewable.twenty",
-                         "com.bjitgroup.easypurchase.nonRenewable.thirty",
-                         "com.bjitgroup.easypurchase.nonRenewable.forty",
-                         "com.bjitgroup.easypurchase.autorenewweekly",
-                         "com.bjitgroup.easypurchase.autorenewmonthly",
-                         "com.bjitgroup.easypurchase.autorenewyearly"
+    let productsList = [
+        "com.bjitgroup.easypurchase.consumable.tencoin",
+        "com.bjitgroup.easypurchase.consumable.twentycoin",
+        "com.bjitgroup.easypurchase.consumable.thirtycoin",
+        "com.bjitgroup.easypurchase.nonconsumable.levelone",
+        "com.bjitgroup.easypurchase.nonconsumable.leveltwo",
+        "com.bjitgroup.easypurchase.nonconsumable.levelthree",
+        "com.bjitgroup.easypurchase.nonRenewable.twenty",
+        "com.bjitgroup.easypurchase.nonRenewable.thirty",
+        "com.bjitgroup.easypurchase.nonRenewable.forty",
+        "com.bjitgroup.easypurchase.autorenewweekly",
+        "com.bjitgroup.easypurchase.autorenewmonthly",
+        "com.bjitgroup.easypurchase.autorenewyearly"
     ]
     func getPurchasableProducts() {
         IAPHelper.shared.fetchProductsData(type: productsList)
@@ -58,10 +59,10 @@ class FetchProductListViewModel {
         return nil
     }
     func filterProductsByType(_ products: [SKProduct]) {
-        var consumables = [SKProduct]()
-        var nonConsumables = [SKProduct]()
-        var nonRenewables = [SKProduct]()
-        var autoRenewables = [SKProduct]()
+        var consumables: [SKProduct] = []
+        var nonConsumables: [SKProduct] = []
+        var nonRenewables: [SKProduct] = []
+        var autoRenewables: [SKProduct] = []
         for product in products {
             if let productType = determineProductType(for: product) {
                 switch productType {

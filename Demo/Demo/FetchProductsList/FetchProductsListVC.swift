@@ -19,20 +19,19 @@ class FetchProductsListVC: UIViewController {
         FetchProductsListVC.viewModel.getPurchasableProducts()
     }
     func setupBinders() {
-        FetchProductsListVC.viewModel.fetchList.bind(listener: { [weak self] fetchedList in
+        FetchProductsListVC.viewModel.fetchList.bind { [weak self] fetchedList in
             DispatchQueue.main.async {
                 self?.loader.stopAnimating()
             }
-            guard let fetchedList else {
+            guard let fetchedList = fetchedList else {
                 return
             }
             self?.productList = fetchedList
             DispatchQueue.main.async { [weak self] in
                 self?.tableViewX.reloadData()
             }
-        })
+        }
     }
-    
     func initialSetup() {
         tableViewX.delegate = self
         tableViewX.dataSource = self
@@ -60,9 +59,8 @@ extension FetchProductsListVC: UITableViewDelegate, UITableViewDataSource {
             headerLabel.text = "Auto-Renewable"
         }
         headerLabel.font = UIFont.systemFont(ofSize: 19, weight: .bold)
-        headerLabel.textColor = #colorLiteral(red: 0.2078385055, green: 0.2078467906, blue: 0.3428357244, alpha: 0.7636330712)
+        headerLabel.textColor = UIColor(red: 0.2, green: 0.2, blue: 0.35, alpha: 0.76)
         headerView.addSubview(headerLabel)
-
         return headerView
     }
     

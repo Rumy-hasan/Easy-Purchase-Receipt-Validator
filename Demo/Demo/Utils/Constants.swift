@@ -8,7 +8,7 @@
 import Foundation
 import StoreKit
 
-class Constants {
+enum Constants {
     static let purchasableProducts = ["", ""]
     static var availableProductsCollection: [String: SKProduct] = [:]
 }

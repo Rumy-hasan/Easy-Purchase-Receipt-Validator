@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Messages {
+enum Messages {
     static let cannotMakePayments = "\(notAuthorized) \(installing)"
     static let couldNotFind = "Could not find resource file:"
     static let deferred = "Allow the user to continue using your app."
