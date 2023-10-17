@@ -76,16 +76,16 @@ class FetchProductListViewModel {
                 }
             }
         }
-        consumables = consumables.sorted { (product1, product2) -> Bool in
+        consumables = consumables.sorted { product1, product2 -> Bool in
             return product1.price.compare(product2.price) == .orderedAscending
         }
-        nonConsumables = nonConsumables.sorted { (product1, product2) -> Bool in
+        nonConsumables = nonConsumables.sorted { product1, product2 -> Bool in
             return product1.price.compare(product2.price) == .orderedAscending
         }
-        nonRenewables = nonRenewables.sorted { (product1, product2) -> Bool in
+        nonRenewables = nonRenewables.sorted { product1, product2 -> Bool in
             return product1.price.compare(product2.price) == .orderedAscending
         }
-        autoRenewables = autoRenewables.sorted { (product1, product2) -> Bool in
+        autoRenewables = autoRenewables.sorted { product1, product2 -> Bool in
             return product1.price.compare(product2.price) == .orderedAscending
         }
         fetchList.value = FetchList(consumable: consumables, nonConsumable: nonConsumables, nonRenewable: nonRenewables, autoRenewable: autoRenewables)

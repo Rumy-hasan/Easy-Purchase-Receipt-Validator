@@ -59,7 +59,6 @@ extension IAPHelper: SKProductsRequestDelegate, SKRequestDelegate {
 
 // MARK: - Payment Queue Delegates
 extension IAPHelper: SKPaymentTransactionObserver {
-
     /// Called when there are transactions in the payment queue.
     func paymentQueue(_ queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
         for transaction in transactions {

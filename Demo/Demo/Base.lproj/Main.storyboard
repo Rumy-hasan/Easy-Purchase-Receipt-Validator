@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="uFP-QF-82f">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -37,7 +38,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="STr-9a-dk8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2808.3969465648852" y="38.732394366197184"/>
+            <point key="canvasLocation" x="1882" y="206"/>
         </scene>
         <!--Product List-->
         <scene sceneID="OxY-xh-jaV">
@@ -75,7 +76,93 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ptr-fl-1ZS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2806.8702290076335" y="-568.30985915492965"/>
+            <point key="canvasLocation" x="2798" y="-568"/>
+        </scene>
+        <!--Product DetailVC-->
+        <scene sceneID="FhY-4L-NSb">
+            <objects>
+                <viewController storyboardIdentifier="ProductDetailVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="9VO-yr-dtv" customClass="ProductDetailVC" customModule="Demo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="l9g-Dj-KdC">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pY5-ZR-qyv">
+                                <rect key="frame" x="0.0" y="0.0" width="393" height="100"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Product Detail View" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HLY-GJ-Z2P">
+                                        <rect key="frame" x="95.666666666666686" y="50" width="202" height="27"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
+                                        <color key="textColor" red="0.94918004820000001" green="1" blue="0.87841194690000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.2198603049" green="0.36591897550000002" blue="0.3417917862" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="HLY-GJ-Z2P" firstAttribute="top" secondItem="pY5-ZR-qyv" secondAttribute="top" constant="50" id="98o-8D-203"/>
+                                    <constraint firstItem="HLY-GJ-Z2P" firstAttribute="centerX" secondItem="pY5-ZR-qyv" secondAttribute="centerX" id="uXL-Iw-ala"/>
+                                    <constraint firstAttribute="height" constant="100" id="xk7-wJ-i8x"/>
+                                </constraints>
+                            </view>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="unlocked" translatesAutoresizingMaskIntoConstraints="NO" id="KXL-5f-Avj">
+                                <rect key="frame" x="85" y="120" width="223" height="326"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The Alchemist" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3t1-go-tml">
+                                <rect key="frame" x="116" y="476" width="161" height="29"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Paul Coelho" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wHP-QP-fiY">
+                                <rect key="frame" x="148.66666666666666" y="510" width="96" height="22"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="justified" translatesAutoresizingMaskIntoConstraints="NO" id="7zG-gb-tFH">
+                                <rect key="frame" x="5" y="537" width="383" height="310"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <string key="text">An Andalusian shepherd boy named Santiago dreams of a treasure while in a ruined church. He consults a Gypsy fortune-teller about the meaning of the recurring dream. The woman interprets it as a prophecy, telling the boy that he will discover a treasure at the Egyptian pyramids.
+
+After Santiago sets out he meets an old king, Melchizedek, or the king of Salem, who tells him to sell his sheep so as to travel to Egypt and accomplish his "Personal Legend". Early on his arrival in Africa, a man who claims to be able to take Santiago to the pyramids instead robs him of the money he had made from his flock. Santiago then has to work for a crystal merchant to earn enough to get to the pyramids.
+
+Along the way, the boy meets an Englishman who has come in search of an alchemist and continues his travels with his new companion. When they reach an oasis, Santiago meets and falls in love with an Arabian girl named Fatima, to whom he proposes marriage. She promises to marry him only after he completes his journey. Frustrated at first, he later learns that true love will not stop nor must one sacrifice one's destiny to it, since to do so robs it of truth.The boy then encounters a wise alchemist, who teaches him to realize his true self. Together, they risk a journey through the territory of warring tribes, where Santiago is forced to demonstrate his oneness with the "Soul of the World" by turning himself into a dust storm before he is allowed to proceed.
+
+When he reaches the pyramids and begins digging, he is robbed by thieves, who ask him what he is digging for; he replies that a dream has led him to buried treasure. The thieves scoff, and the leader remarks about a dream he once had about treasure under a tree at a ruined church. Santiago realizes the treasure he sought was where he had his original dream all along.</string>
+                                <color key="textColor" systemColor="labelColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="vsi-YV-BDp"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="3t1-go-tml" firstAttribute="top" secondItem="KXL-5f-Avj" secondAttribute="bottom" constant="30" id="1om-b3-vcl"/>
+                            <constraint firstItem="3t1-go-tml" firstAttribute="centerX" secondItem="KXL-5f-Avj" secondAttribute="centerX" id="48P-Uo-1hs"/>
+                            <constraint firstItem="KXL-5f-Avj" firstAttribute="centerX" secondItem="vsi-YV-BDp" secondAttribute="centerX" id="69Y-xW-xvE"/>
+                            <constraint firstItem="7zG-gb-tFH" firstAttribute="centerX" secondItem="wHP-QP-fiY" secondAttribute="centerX" id="DCM-Ix-KAE"/>
+                            <constraint firstAttribute="trailing" secondItem="pY5-ZR-qyv" secondAttribute="trailing" id="Hsh-Tp-IGw"/>
+                            <constraint firstItem="KXL-5f-Avj" firstAttribute="top" secondItem="pY5-ZR-qyv" secondAttribute="bottom" constant="20" id="IKE-5v-H0x"/>
+                            <constraint firstItem="pY5-ZR-qyv" firstAttribute="leading" secondItem="l9g-Dj-KdC" secondAttribute="leading" id="KrC-2e-5id"/>
+                            <constraint firstItem="pY5-ZR-qyv" firstAttribute="top" secondItem="l9g-Dj-KdC" secondAttribute="top" id="MWT-PZ-PnU"/>
+                            <constraint firstItem="KXL-5f-Avj" firstAttribute="height" secondItem="l9g-Dj-KdC" secondAttribute="height" multiplier="0.382629" id="Ntx-IK-zIO"/>
+                            <constraint firstItem="wHP-QP-fiY" firstAttribute="top" secondItem="3t1-go-tml" secondAttribute="bottom" constant="5" id="NxN-2w-42y"/>
+                            <constraint firstItem="7zG-gb-tFH" firstAttribute="top" secondItem="wHP-QP-fiY" secondAttribute="bottom" constant="5" id="YOX-nw-qmB"/>
+                            <constraint firstItem="7zG-gb-tFH" firstAttribute="leading" secondItem="l9g-Dj-KdC" secondAttribute="leading" constant="5" id="bCL-ov-71f"/>
+                            <constraint firstItem="wHP-QP-fiY" firstAttribute="centerX" secondItem="3t1-go-tml" secondAttribute="centerX" id="eFG-yS-XmQ"/>
+                            <constraint firstItem="KXL-5f-Avj" firstAttribute="width" secondItem="l9g-Dj-KdC" secondAttribute="width" multiplier="0.56743" id="usj-z8-IHJ"/>
+                            <constraint firstAttribute="bottom" secondItem="7zG-gb-tFH" secondAttribute="bottom" constant="5" id="v3T-iq-Ovp"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="productDescription" destination="7zG-gb-tFH" id="kco-Kv-ZXY"/>
+                        <outlet property="productImage" destination="KXL-5f-Avj" id="mf2-Te-gSH"/>
+                        <outlet property="productPrice" destination="wHP-QP-fiY" id="CpG-Uq-k1B"/>
+                        <outlet property="productTitle" destination="3t1-go-tml" id="rsb-x7-9Vc"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Pdc-wa-lM4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3690.8396946564885" y="-568.30985915492965"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="bEI-o5-Yq2">
@@ -118,6 +205,10 @@
     </scenes>
     <resources>
         <image name="books.vertical" catalog="system" width="128" height="107"/>
+        <image name="unlocked" width="512" height="512"/>
+        <systemColor name="labelColor">
+            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

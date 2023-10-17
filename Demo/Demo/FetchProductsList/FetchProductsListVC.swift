@@ -11,7 +11,7 @@ class FetchProductsListVC: UIViewController {
     @IBOutlet weak var loader: UIActivityIndicatorView!
     @IBOutlet weak var tableViewX: UITableView!
     static var viewModel = FetchProductListViewModel()
-    var productList: FetchList = FetchList(consumable: [], nonConsumable: [], nonRenewable: [], autoRenewable: [])
+    var productList = FetchList(consumable: [], nonConsumable: [], nonRenewable: [], autoRenewable: [])
     override func viewDidLoad() {
         super.viewDidLoad()
         initialSetup()
@@ -42,7 +42,6 @@ class FetchProductsListVC: UIViewController {
 }
 
 extension FetchProductsListVC: UITableViewDelegate, UITableViewDataSource {
-    
     func tableView(_: UITableView, heightForHeaderInSection _: Int) -> CGFloat {
         return 30 // Set the height of the header to 100 points
     }
