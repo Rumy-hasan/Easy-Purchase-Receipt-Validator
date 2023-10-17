@@ -51,11 +51,17 @@
                                 <rect key="frame" x="0.0" y="103" width="393" height="749"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </tableView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="8PM-DG-9PI">
+                                <rect key="frame" x="178" y="407.66666666666669" width="37" height="37"/>
+                                <color key="color" red="0.21960784310000001" green="0.36470588240000001" blue="0.3411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="pMR-Cr-Zmd"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="8PM-DG-9PI" firstAttribute="centerY" secondItem="8yJ-df-6s0" secondAttribute="centerY" id="MbE-gu-Iyt"/>
                             <constraint firstItem="OhC-xu-KxM" firstAttribute="top" secondItem="pMR-Cr-Zmd" secondAttribute="top" id="Ref-Kg-aZP"/>
+                            <constraint firstItem="8PM-DG-9PI" firstAttribute="centerX" secondItem="8yJ-df-6s0" secondAttribute="centerX" id="WSB-ob-Zxa"/>
                             <constraint firstItem="pMR-Cr-Zmd" firstAttribute="trailing" secondItem="OhC-xu-KxM" secondAttribute="trailing" id="Zcv-l4-xUi"/>
                             <constraint firstItem="OhC-xu-KxM" firstAttribute="leading" secondItem="pMR-Cr-Zmd" secondAttribute="leading" id="d7P-gd-RC0"/>
                             <constraint firstAttribute="bottom" secondItem="OhC-xu-KxM" secondAttribute="bottom" id="fMp-3P-Wqc"/>
@@ -63,12 +69,13 @@
                     </view>
                     <navigationItem key="navigationItem" title="Product List" id="z16-1T-SUq"/>
                     <connections>
+                        <outlet property="loader" destination="8PM-DG-9PI" id="S3M-ap-7Kg"/>
                         <outlet property="tableViewX" destination="OhC-xu-KxM" id="wcQ-98-GLh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ptr-fl-1ZS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2808.3969465648852" y="-568.30985915492965"/>
+            <point key="canvasLocation" x="2806.8702290076335" y="-568.30985915492965"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="bEI-o5-Yq2">
