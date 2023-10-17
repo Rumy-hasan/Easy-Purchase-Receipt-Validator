@@ -39,7 +39,9 @@ class FetchProductListViewModel {
     func getPurchasableProducts() {
         IAPHelper.shared.fetchProductsData(type: productsList)
     }
-
+    func buyProduct(_ product: SKProduct) {
+        IAPHelper.shared.buy(product)
+    }
     func determineProductType(for product: SKProduct) -> ProductType? {
         let productIdentifier = product.productIdentifier
         print(productIdentifier)
@@ -55,7 +57,7 @@ class FetchProductListViewModel {
         // If the product doesn't match any known type, return nil or an appropriate default type.
         return nil
     }
-    func filterProductsByType(_ products: [SKProduct]){
+    func filterProductsByType(_ products: [SKProduct]) {
         var consumables = [SKProduct]()
         var nonConsumables = [SKProduct]()
         var nonRenewables = [SKProduct]()
@@ -74,7 +76,6 @@ class FetchProductListViewModel {
                 }
             }
         }
-
         consumables = consumables.sorted { (product1, product2) -> Bool in
             return product1.price.compare(product2.price) == .orderedAscending
         }

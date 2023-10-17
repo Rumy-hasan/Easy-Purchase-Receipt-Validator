@@ -111,4 +111,18 @@ extension FetchProductsListVC: UITableViewDelegate, UITableViewDataSource {
         }
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableViewX.deselectRow(at: indexPath, animated: true)
+
+        if indexPath.section == 0 {
+            FetchProductsListVC.viewModel.buyProduct(productList.consumable[indexPath.row])
+        } else if indexPath.section == 1 {
+            FetchProductsListVC.viewModel.buyProduct(productList.nonConsumable[indexPath.row])
+        } else if indexPath.section == 2 {
+            FetchProductsListVC.viewModel.buyProduct(productList.nonRenewable[indexPath.row])
+        } else {
+            FetchProductsListVC.viewModel.buyProduct(productList.autoRenewable[indexPath.row])
+        }
+    }
 }
