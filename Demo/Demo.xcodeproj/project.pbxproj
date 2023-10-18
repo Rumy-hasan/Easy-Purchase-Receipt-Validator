@@ -28,6 +28,8 @@
 		893778A12ADE51DB00DEF484 /* ProductDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 893778A02ADE51DB00DEF484 /* ProductDetailVC.swift */; };
 		893778A52ADE5B9500DEF484 /* RestoreVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 893778A42ADE5B9500DEF484 /* RestoreVC.swift */; };
 		893778A72ADE5F1600DEF484 /* RestoreViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 893778A62ADE5F1600DEF484 /* RestoreViewModel.swift */; };
+		893778AA2ADFA80E00DEF484 /* ReceiptStateVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 893778A92ADFA80E00DEF484 /* ReceiptStateVC.swift */; };
+		893778AC2ADFA82B00DEF484 /* ReceiptStateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 893778AB2ADFA82B00DEF484 /* ReceiptStateViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,6 +75,8 @@
 		893778A02ADE51DB00DEF484 /* ProductDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailVC.swift; sourceTree = "<group>"; };
 		893778A42ADE5B9500DEF484 /* RestoreVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestoreVC.swift; sourceTree = "<group>"; };
 		893778A62ADE5F1600DEF484 /* RestoreViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestoreViewModel.swift; sourceTree = "<group>"; };
+		893778A92ADFA80E00DEF484 /* ReceiptStateVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptStateVC.swift; sourceTree = "<group>"; };
+		893778AB2ADFA82B00DEF484 /* ReceiptStateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptStateViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,6 +137,7 @@
 				893778832ADE2D1300DEF484 /* FetchProductsList */,
 				8937789F2ADE518D00DEF484 /* ProductDetailVC */,
 				893778A32ADE5B7500DEF484 /* RestoreView */,
+				893778A82ADFA7E200DEF484 /* ReceiptView */,
 				893778902ADE3B4100DEF484 /* Utils */,
 				893778952ADE3C2E00DEF484 /* StorekitHelper */,
 				84C477592ADCF578003A20F7 /* LaunchScreen.storyboard */,
@@ -210,6 +215,15 @@
 				893778A62ADE5F1600DEF484 /* RestoreViewModel.swift */,
 			);
 			path = RestoreView;
+			sourceTree = "<group>";
+		};
+		893778A82ADFA7E200DEF484 /* ReceiptView */ = {
+			isa = PBXGroup;
+			children = (
+				893778A92ADFA80E00DEF484 /* ReceiptStateVC.swift */,
+				893778AB2ADFA82B00DEF484 /* ReceiptStateViewModel.swift */,
+			);
+			path = ReceiptView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -387,6 +401,7 @@
 			files = (
 				893778A12ADE51DB00DEF484 /* ProductDetailVC.swift in Sources */,
 				84C477532ADCF577003A20F7 /* ViewController.swift in Sources */,
+				893778AC2ADFA82B00DEF484 /* ReceiptStateViewModel.swift in Sources */,
 				84C4774F2ADCF577003A20F7 /* AppDelegate.swift in Sources */,
 				893778992ADE3D4600DEF484 /* FetchProductListViewModel.swift in Sources */,
 				893778A72ADE5F1600DEF484 /* RestoreViewModel.swift in Sources */,
@@ -398,6 +413,7 @@
 				8937789B2ADE3DD000DEF484 /* IAPHelper.swift in Sources */,
 				893778922ADE3B6700DEF484 /* Constants.swift in Sources */,
 				893778A52ADE5B9500DEF484 /* RestoreVC.swift in Sources */,
+				893778AA2ADFA80E00DEF484 /* ReceiptStateVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -573,9 +589,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = GPG86773UF;
+				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 2BL4KQW6R5;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Demo/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -592,6 +610,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.bjitgroup.easypurchase;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = EasyPurchase;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -604,9 +623,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = GPG86773UF;
+				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 2BL4KQW6R5;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Demo/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -623,6 +644,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.bjitgroup.easypurchase;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = EasyPurchase;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
