@@ -8,7 +8,7 @@
 import UIKit
 import StoreKit
 
-class RestoreVC: UIViewController {
+final class RestoreVC: UIViewController {
     @IBOutlet weak var tableViewX: UITableView!
     @IBOutlet weak var loader: UIActivityIndicatorView!
     static var viewModel = RestoreViewModel()
@@ -20,14 +20,14 @@ class RestoreVC: UIViewController {
         setupBinder()
         // Do any additional setup after loading the view.
     }
-    func initialSetup() {
+    private func initialSetup() {
         tableViewX.delegate = self
         tableViewX.dataSource = self
 
         let nib = UINib(nibName: "ProductCell", bundle: nil)
         tableViewX.register(nib, forCellReuseIdentifier: "ProductCell")
     }
-    func setupBinder() {
+    private func setupBinder() {
         RestoreVC.viewModel.fetchList.bind { [weak self] fetchedList in
             DispatchQueue.main.async {
                 self?.loader.stopAnimating()

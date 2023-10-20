@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ReceiptStateVC: UIViewController {
+final class ReceiptStateVC: UIViewController {
     @IBOutlet weak var availabilityBox: UIView!
     @IBOutlet weak var availabilityLabel: UILabel!
     var doesReceiptExist = false
@@ -17,14 +17,14 @@ class ReceiptStateVC: UIViewController {
         initialSetup()
         setupBinders()
     }
-    func initialSetup() {
+    private func initialSetup() {
         availabilityBox.layer.cornerRadius = 10
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         doesReceiptExist = ReceiptStateVC.viewModel.doesAppStoreReceiptExist()
     }
-    func setupBinders() {
+    private func setupBinders() {
         ReceiptStateVC.viewModel.isReceiptAvailable.bind { [weak self] value in
             if value ?? false {
                 UIView.animate(withDuration: 1.0) {

@@ -8,7 +8,7 @@
 import UIKit
 import StoreKit
 
-class ProductDetailVC: UIViewController {
+final class ProductDetailVC: UIViewController {
     @IBOutlet weak var productImage: UIImageView!
     
     @IBOutlet weak var productDescription: UITextView!
@@ -18,6 +18,9 @@ class ProductDetailVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        initialSetup()
+    }
+    private func initialSetup() {
         guard let product else {
             return
         }

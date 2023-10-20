@@ -8,7 +8,7 @@
 import Foundation
 import StoreKit
 
-class IAPHelper: NSObject {
+final class IAPHelper: NSObject {
     static let shared = IAPHelper()
     var availableProducts: [SKProduct] = []
     var invalidProductIdentifiers: [String] = []

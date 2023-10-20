@@ -15,7 +15,7 @@ struct FetchList {
     let autoRenewable: [SKProduct]
 }
 
-class FetchProductListViewModel {
+final class FetchProductListViewModel {
     var fetchedProducts: [SKProduct] = [] {
         didSet {
             createProductDictionary(fetchedProducts)
@@ -43,7 +43,7 @@ class FetchProductListViewModel {
     func buyProduct(_ product: SKProduct) {
         IAPHelper.shared.buy(product)
     }
-    func determineProductType(for product: SKProduct) -> ProductType? {
+    private func determineProductType(for product: SKProduct) -> ProductType? {
         let productIdentifier = product.productIdentifier
         print(productIdentifier)
         if productIdentifier.contains(".consumable") {
@@ -58,7 +58,7 @@ class FetchProductListViewModel {
         // If the product doesn't match any known type, return nil or an appropriate default type.
         return nil
     }
-    func filterProductsByType(_ products: [SKProduct]) {
+    private func filterProductsByType(_ products: [SKProduct]) {
         var consumables: [SKProduct] = []
         var nonConsumables: [SKProduct] = []
         var nonRenewables: [SKProduct] = []
@@ -91,7 +91,7 @@ class FetchProductListViewModel {
         }
         fetchList.value = FetchList(consumable: consumables, nonConsumable: nonConsumables, nonRenewable: nonRenewables, autoRenewable: autoRenewables)
     }
-    func createProductDictionary(_ fetchedProducts: [SKProduct]) {
+    private func createProductDictionary(_ fetchedProducts: [SKProduct]) {
         for index in 0..<fetchedProducts.count {
             Constants.availableProductsCollection[fetchedProducts[index].productIdentifier] = fetchedProducts[index]
         }

@@ -6,8 +6,9 @@
 //
 
 import UIKit
+import StoreKit
 
-class FetchProductsListVC: UIViewController {
+final class FetchProductsListVC: UIViewController {
     @IBOutlet weak var loader: UIActivityIndicatorView!
     @IBOutlet weak var tableViewX: UITableView!
     static var viewModel = FetchProductListViewModel()
@@ -18,7 +19,7 @@ class FetchProductsListVC: UIViewController {
         setupBinders()
         FetchProductsListVC.viewModel.getPurchasableProducts()
     }
-    func setupBinders() {
+    private func setupBinders() {
         FetchProductsListVC.viewModel.fetchList.bind { [weak self] fetchedList in
             DispatchQueue.main.async {
                 self?.loader.stopAnimating()
@@ -32,11 +33,35 @@ class FetchProductsListVC: UIViewController {
             }
         }
     }
-    func initialSetup() {
+    private func initialSetup() {
         tableViewX.delegate = self
         tableViewX.dataSource = self
         let nib = UINib(nibName: "ProductCell", bundle: nil)
         tableViewX.register(nib, forCellReuseIdentifier: "ProductCell")
+    }
+    private func getProductType(section: Int) -> [SKProduct] {
+        switch section {
+        case 0:
+            return productList.consumable
+        case 1:
+            return productList.nonConsumable
+        case 2:
+            return productList.nonRenewable
+        default:
+            return productList.autoRenewable
+        }
+    }
+    private func getCellImage(section: Int) -> UIImage? {
+        switch section {
+        case 0:
+            return UIImage(named: "consume")
+        case 1:
+            return UIImage(named: "level")
+        case 2:
+            return UIImage(named: "nonrenew")
+        default:
+            return UIImage(named: "autorenew")
+        }
     }
 }
 
@@ -58,7 +83,7 @@ extension FetchProductsListVC: UITableViewDelegate, UITableViewDataSource {
         } else {
             headerLabel.text = "Auto-Renewable"
         }
-        headerLabel.font = UIFont.systemFont(ofSize: 19, weight: .bold)
+        headerLabel.font = UIFont.systemFont(ofSize: 20, weight: .bold)
         headerLabel.textColor = UIColor(red: 0.2, green: 0.2, blue: 0.35, alpha: 0.76)
         headerView.addSubview(headerLabel)
         return headerView
@@ -89,37 +114,14 @@ extension FetchProductsListVC: UITableViewDelegate, UITableViewDataSource {
         }
         cell.view.layer.cornerRadius = 10
         cell.productImage.layer.cornerRadius = 10
-        if indexPath.section == 0 {
-            cell.productTitle.text = productList.consumable[indexPath.row].localizedTitle
-            cell.productPrice.text = "$ \(productList.consumable[indexPath.row].price)"
-            cell.productImage.image = UIImage(named: "consume")
-        } else if indexPath.section == 1 {
-            cell.productTitle.text = productList.nonConsumable[indexPath.row].localizedTitle
-            cell.productPrice.text = "$ \(productList.nonConsumable[indexPath.row].price)"
-            cell.productImage.image = UIImage(named: "level")
-        } else if indexPath.section == 2 {
-            cell.productTitle.text = productList.nonRenewable[indexPath.row].localizedTitle
-            cell.productPrice.text = "$ \(productList.nonConsumable[indexPath.row].price)"
-            cell.productImage.image = UIImage(named: "nonrenew")
-        } else {
-            cell.productTitle.text = productList.autoRenewable[indexPath.row].localizedTitle
-            cell.productPrice.text = "$ \(productList.nonConsumable[indexPath.row].price)"
-            cell.productImage.image = UIImage(named: "autorenew")
-        }
+        let products = getProductType(section: indexPath.section)
+        cell.productTitle.text = products[indexPath.row].localizedTitle
+        cell.productPrice.text = "$ \(products[indexPath.row].price)"
+        cell.productImage.image = getCellImage(section: indexPath.section)
         return cell
     }
-    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableViewX.deselectRow(at: indexPath, animated: true)
-
-        if indexPath.section == 0 {
-            FetchProductsListVC.viewModel.buyProduct(productList.consumable[indexPath.row])
-        } else if indexPath.section == 1 {
-            FetchProductsListVC.viewModel.buyProduct(productList.nonConsumable[indexPath.row])
-        } else if indexPath.section == 2 {
-            FetchProductsListVC.viewModel.buyProduct(productList.nonRenewable[indexPath.row])
-        } else {
-            FetchProductsListVC.viewModel.buyProduct(productList.autoRenewable[indexPath.row])
-        }
+        let products = getProductType(section: indexPath.section)
+        FetchProductsListVC.viewModel.buyProduct(products[indexPath.row])
     }
 }

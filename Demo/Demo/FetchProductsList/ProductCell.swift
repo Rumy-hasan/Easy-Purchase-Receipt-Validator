@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ProductCell: UITableViewCell {
+final class ProductCell: UITableViewCell {
     @IBOutlet weak var view: UIView!
     @IBOutlet weak var productPrice: UILabel!
     @IBOutlet weak var productTitle: UILabel!

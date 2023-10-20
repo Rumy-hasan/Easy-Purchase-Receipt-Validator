@@ -8,7 +8,7 @@
 import Foundation
 import StoreKit
 
-class RestoreViewModel {
+final class RestoreViewModel {
     var fetchList: ObservableObject<[SKPaymentTransaction]?> = ObservableObject(nil)
     
     func restoreCompletedTransactions() {

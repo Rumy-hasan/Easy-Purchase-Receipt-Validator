@@ -7,7 +7,7 @@
 
 import Foundation
 
-class ReceiptStateViewModel {
+final class ReceiptStateViewModel {
     var isReceiptAvailable: ObservableObject<Bool?> = ObservableObject(nil)
     func doesAppStoreReceiptExist() -> Bool {
         if let receiptURL = Bundle.main.appStoreReceiptURL,
