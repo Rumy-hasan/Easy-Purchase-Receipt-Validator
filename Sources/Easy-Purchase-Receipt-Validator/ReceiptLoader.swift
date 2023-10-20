@@ -8,7 +8,6 @@ import Foundation
 class ReceiptLoader {
     public func getReceipt(_ url: URL? = Bundle.main.appStoreReceiptURL, _ completion: @escaping(_ success: Bool, _ data: Data?, _ error: ReceiptError?) -> Void) {
         guard let appReceiptURL = url else {
-            print("Bundle.main.appStoreReceiptURL \(url?.path)")
             completion(false, nil, .invalidURL)
             return
         }
