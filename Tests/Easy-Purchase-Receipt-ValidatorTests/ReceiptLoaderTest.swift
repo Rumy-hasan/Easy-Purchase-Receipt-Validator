@@ -13,27 +13,18 @@ final class ReceiptLoaderTest: XCTestCase {
     override func tearDown() {
         receiptLoader = nil
     }
-    func testInvalidUrl() {
+    func test_getReceipt_whenInvalidUrlGiven_shouldReturnInvalidURLError() {
         let url = URL(string: "")
-        receiptLoader?.getReceipt(url) { success, data, error in
-            XCTAssertFalse(success, "Receipt fetching should fail")
-            XCTAssertNil(data, "Receipt data should be nil")
-            XCTAssertEqual(error, ReceiptError.invalidURL, "Error should be .invalidURL")
+        receiptLoader?.getReceipt(url) { data, error   in
+            XCTAssertEqual(error, ReceiptError.invalidURL, "Error expected to be .invalidURL")
+            XCTAssertNil(data, "Receipt data expected to be nil but found data")
         }
     }
-    func testFileNotFound() {
+    func test_getReceipt_whenIncorrectValidURLGiven_shouldReturnErrorAsFileNotFound() {
         let url = URL(string: "receipt/fileNotFountURL")
-        receiptLoader?.getReceipt(url) { success, data, error in
-            XCTAssertFalse(success, "Receipt fetching should fail")
-            XCTAssertNil(data, "Receipt data should be nil")
-            XCTAssertEqual(error, ReceiptError.fileNotFound, "Error should be .fileNotFound")
+        receiptLoader?.getReceipt(url) { data, error in
+            XCTAssertEqual(error, ReceiptError.fileNotFound, "Error expected to be .fileNotFound")
+            XCTAssertNil(data, "Receipt data expected to be nil but found data")
         }
     }
-//    func testValidURLWithSuccess() {
-//        receiptLoader?.getReceipt{ success, data, error in
-//            XCTAssertTrue(success, "Receipt fetching should not fail")
-//            XCTAssertNil(data, "Receipt data should not be nil")
-//            XCTAssertEqual(error, ReceiptError.invalidURL, "Error should be .invalidURL")
-//        }
-//    }
 }
