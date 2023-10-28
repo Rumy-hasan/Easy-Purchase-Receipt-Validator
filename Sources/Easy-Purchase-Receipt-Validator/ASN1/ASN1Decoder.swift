@@ -10,12 +10,17 @@
 
 import Foundation
 
+enum ASN1Error: Error {
+    case parseError
+    case outOfBuffer
+}
+
 class ASN1Decoder{
     
 }
 
 // MARK: - ASN1Object actual data length
-extension ASN1Decoder{
+extension ASN1Decoder {
     /**
      it returns the length value as a UInt64, which represents the number of bytes needed to represent the content within the ASN.1 object
      
@@ -52,5 +57,21 @@ extension ASN1Decoder{
             return data.uint64Value ?? 0
         }
         return UInt64(firstByte)
+    }
+    
+    func loadChildContent(iterator: inout Data.Iterator) throws -> Data {
+        let len = self.getContentLength(iterator: &iterator)
+        guard len < Int.max else {
+            return Data()
+        }
+        var byteArray: [UInt8] = []
+        for _ in 0..<Int(len) {
+            if let n = iterator.next() {
+                byteArray.append(n)
+            } else {
+                throw ASN1Error.outOfBuffer
+            }
+        }
+        return Data(byteArray)
     }
 }
